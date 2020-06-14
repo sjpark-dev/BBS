@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="board">
+	<insert id="insert" 
+		parameterType="board"
+		useGeneratedKeys="true" keyProperty="bno">
+		insert into board (btitle, bcontent, bwriter, bhitcount, bdate, bgenre, bposteroname, bpostersname, bpostertype, btotalrating, bratingcount, bvideooname, bvideosname, bvideotype)
+		values(#{btitle}, #{bcontent}, #{bwriter}, 0, now(), #{bgenre}, #{bposteroname}, #{bpostersname}, #{bpostertype}, 0, 0, #{bvideooname}, #{bvideosname}, #{bvideotype})
+	</insert>
+	
+	<select id="selectByBno" resultType="board">
+		select bno, btitle, bcontent, bwriter, bhitcount, bdate, bgenre, bposteroname, bpostersname, bpostertype, btotalrating, bratingcount, bpostertype, btotalrating, bratingcount, bvideooname, bvideosname, bvideotype
+		from board
+		where bno=#{bno}
+	</select>
+	
+	<select id="selectAll" resultType="board">
+		select * from board;
+	</select>
+	
+	<delete id="deleteByBno">
+		delete from board where bno=#{bno}
+	</delete>
+	
+	<update id="updateByBno">
+		update board set btitle=#{btitle}, bcontent=#{bcontent}, bgenre=#{bgenre}, bposteroname=#{bposteroname}, bpostersname=#{bpostersname}, bpostertype=#{bpostertype}, bdate=#{bdate}, bvideooname=#{bvideooname}, bvideosname=#{bvideosname}, bvideotype=#{bvideotype}
+		where bno=#{bno}
+	</update>
+	
+	<update id="updateRatingByBno">
+		update board set btotalrating=#{btotalrating}, bratingcount=#{bratingcount}
+		where bno=#{bno}
+	</update>
+	
+	<update id="updateBhitcountByBno">
+		update board set bhitcount=bhitcount+1
+		where bno=#{bno}
+	</update>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="member" type="com.mycompany.project.model.Member"/>
+		<typeAlias alias="board" type="com.mycompany.project.model.Board"/>
+		<typeAlias alias="rating" type="com.mycompany.project.model.Rating"/>
+		<typeAlias alias="comment" type="com.mycompany.project.model.Comment"/>
+		<typeAlias alias="good" type="com.mycompany.project.model.Good"/>
+	</typeAliases>
+</configuration>

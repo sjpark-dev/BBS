@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="rating">
+	<insert id="insert" 
+		parameterType="rating">
+		insert into rating (bno, mid, midrating)
+		values(#{bno}, #{mid}, #{midrating})
+	</insert>
+	
+	<select id="selectByBnoAndMid" resultType="rating">
+		select bno, mid, midrating
+		from rating
+		where bno=#{bno} and mid=#{mid}
+	</select>
+	
+	<delete id="deleteratingByBnoAndMid">
+		delete from rating where bno=#{bno} and mid=#{mid}
+	</delete>
+	
+	<update id="updateRatingByBnoAndMid">
+		update rating set midrating=#{midrating}
+		where bno=#{bno} and mid=#{mid}
+	</update>
+</mapper>
