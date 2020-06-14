@@ -102,7 +102,7 @@ public class MemberController {
 		String mid = (String) session.getAttribute("sessionMid");
 		Member member = memberService.selectMember(mid);
 		model.addAttribute("member", member);
-		return "member/myAccount";
+		return "member/myAccountForm";
 	}*/
 	
 	@PostMapping("/myAccount.do")
@@ -110,7 +110,7 @@ public class MemberController {
 		LOGGER.info("실행");
 		String viewName = "redirect:/board/list.do";
 		if(bindingResult.hasErrors()) {
-			viewName="member/myAccount";
+			viewName="member/myAccountForm";
 			return viewName;
 		}
 		
@@ -202,7 +202,7 @@ public class MemberController {
 		
 		int result = memberService.login(member);
 		if(result == MemberService.LOGIN_SUCCESS) {
-			viewName = "member/myAccount";
+			viewName = "member/myAccountForm";
 		} else if(result == MemberService.LOGIN_FAIL_MPASSWORD) {
 			bindingResult.rejectValue("mpassword", "login.fail.mpassword");
 		}
